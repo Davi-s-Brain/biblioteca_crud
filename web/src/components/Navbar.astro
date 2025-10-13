@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import Logo from "./Logo.astro";
+import person from "../images/Person.png";
+import search from "../images/Search.png";
+---
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 950px;
+    height: 125px;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 0 60px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Logo */
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Navegação */
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Ícones do canto direito */
+  .icon-area {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .icon-area img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .icon-area img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Responsividade */
+  @media (max-width: 1024px) {
+    header {
+      flex-direction: column;
+      justify-content: center;
+      height: auto;
+      padding: 16px 24px;
+      gap: 10px;
+    }
+
+    nav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .icon-area img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+</style>
+
+<header>
+  <div class="logo-area">
+    <Logo />
+  </div>
+
+  <nav>
+    <div class="nav-links">
+      <Button href="/" text="Página inicial" button_class="regular" />
+      <Button href="/books" text="Livros" button_class="regular" />
+      <Button href="/authors" text="Autores" button_class="regular" />
+      <Button href="/publishers" text="Editoras" button_class="regular" />
+    </div>
+
+    <Button href="/contact-us" text="Fale Conosco" button_class="hightlighted" />
+  </nav>
+
+  <div class="icon-area">
+    <Image src={person} alt="Perfil" />
+    <Image src={search} alt="Buscar" />
+  </div>
+</header>
