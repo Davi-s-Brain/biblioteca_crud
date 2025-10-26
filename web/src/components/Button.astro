@@ -10,8 +10,26 @@ const { href, text, button_class } = Astro.props;
     border: none;
     color: #94a3b8;
     width: fit-content;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 16px;
+  }
+
+  .regular-outlined {
+    background-color: #ffffff00;
+    padding: 20px 16px;
+    border: 2px solid #4e4e4e;
+    color: #94a3b8;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .regular-outlined:hover {
+    color: #ffffff;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.3s;
   }
 
   .regular:hover {
@@ -25,11 +43,16 @@ const { href, text, button_class } = Astro.props;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 16px 20px;
+    padding: 12px 20px;
     gap: 10px;
     font-size: 16px;
     border: none;
+    font-weight: bold;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
 
+    box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
     background: #38bdf8;
     border-radius: 8px;
   }
@@ -38,6 +61,7 @@ const { href, text, button_class } = Astro.props;
     background: #6dd2ff;
     cursor: pointer;
     transition: 0.3s;
+    transform: scale(1.05);
   }
 
   a {

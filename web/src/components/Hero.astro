@@ -1,0 +1,53 @@
+---
+import { Hero3DPlaceholder } from "./Hero3dPlaceholder.jsx";
+import Button from "./Button.astro";
+---
+
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 32px 24px;
+  }
+
+  h1 {
+    font-family: "Playfair", serif;
+    font-size: 64px;
+    color: white;
+  }
+
+  p {
+    font-size: 20px;
+    color: #cbd5e1;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+</style>
+
+<div class="grid-container">
+  <div class="column-one">
+    <h1>Descubra novos mundos em cada página</h1>
+    <p>
+      Encontre livros, autores e recomendações personalizadas para você em um
+      universo de conhecimento.
+    </p>
+
+    <div class="button-container">
+      <Button href="/" text="Explorar livros" button_class="hightlighted" />
+      <Button href="/" text="Ver populares" button_class="regular-outlined" />
+    </div>
+  </div>
+
+  <div class="column-two">
+    <div
+      class="w-full h-[420px] md:h-[560px] animate-fade-in-up"
+      style={{ animationDelay: "200ms" }}
+    >
+      <Hero3DPlaceholder />
+    </div>
+  </div>
+</div>

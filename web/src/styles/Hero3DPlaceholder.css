@@ -1,0 +1,142 @@
+.hero-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  perspective: 1000px;
+  background: transparent;
+}
+
+.book-3d-animation {
+  width: 18rem;
+  height: 24rem;
+  position: relative;
+  transform: rotateY(-25deg);
+  animation: rotateBook 15s infinite linear;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 15px 35px rgba(56, 189, 248, 0.25));
+}
+
+/* --- CAPA --- */
+.book-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #3098c5, #8f42d8);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  z-index: 10;
+  box-shadow:
+    0 0 25px rgba(168, 85, 247, 0.3),
+    0 0 45px rgba(56, 189, 248, 0.2);
+}
+
+/* Brilho animado nas bordas */
+.book-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  background: linear-gradient(120deg, #38bdf8, #a855f7, #38bdf8) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: glowMove 4s linear infinite;
+  opacity: 0.5;
+}
+
+/* Reflexo no chão */
+.book-3d-animation::after {
+  content: "";
+  position: absolute;
+  bottom: -4rem;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(168, 85, 247, 0.15), transparent);
+  border-radius: 50%;
+  filter: blur(20px);
+  transform: rotateX(90deg) scale(1.2);
+}
+
+/* --- CONTEÚDO --- */
+.book-content {
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.circle {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 0.75rem;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.book-content h3 {
+  font-family: serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.book-content p {
+  font-size: 1rem;
+  margin-top: 0.75rem;
+}
+
+/* --- LOMBADA E PÁGINAS --- */
+.book-spine {
+  position: absolute;
+  width: 1rem;
+  height: 100%;
+  background: #1e293b;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  transform-origin: left;
+  transform: rotateY(90deg);
+}
+
+.book-pages {
+  position: absolute;
+  width: 100%;
+  height: 96%;
+  background: white;
+  top: 2%;
+  left: 0;
+  transform: translateZ(-2rem);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes rotateBook {
+  0% {
+    transform: rotateY(-25deg) rotateX(5deg);
+  }
+
+  50% {
+    transform: rotateY(25deg) rotateX(-5deg);
+  }
+
+  100% {
+    transform: rotateY(-25deg) rotateX(5deg);
+  }
+}
+
+@keyframes glowMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
